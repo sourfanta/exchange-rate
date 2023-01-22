@@ -11,17 +11,30 @@
 <body>
     <form action="/create" method="POST">
         @csrf
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date">
-        <label for="currencyCodeFrom">Currency code from</label>
-        <input type="text" name="currencyCodeFrom" id="currencyCodeFrom">
-        <label for="currencyCodeTo">Currency code to</label>
-        <input type="text" name="currencyCodeTo" id="currencyCodeTo">
-        <label for="valueFrom">Value from</label>
-        <input type="float" name="valueFrom" id="valueFrom">
-        <label for="valueTo">Value to</label>
-        <input type="float" name="valueTo" id="valueTo">
-        <button type="submit">Add</button>
+        <div class='form-group'>
+            <input type="date" name="date" id="date">
+        </div>
+
+        <div class='form-group'>
+            <input type="text" name="currencyCodeFrom" placeholder="FROM" id="currencyCodeFrom">
+        </div>
+
+        <div class='form-group'>
+            <input type="text" name="currencyCodeTo" placeholder="TO" id="currencyCodeTo">
+        </div>
+
+        <!-- <div class='form-group'>
+            <input type="float" name="valueFrom" id="valueFrom">
+        </div> -->
+
+        <div class='form-group'>
+            <input type="float" name="valueTo" placeholder="PRICE" id="valueTo">
+        </div>
+
+        <div class='form-group'>
+            <button type="submit">Add</button>
+        </div>
+
     </form>
 </body>
 

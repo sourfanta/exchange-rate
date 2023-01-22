@@ -46,8 +46,7 @@
                 </tbody>
             </table>
         </div>
-
-        <button class="create-button">Create</button>
+        <button class="create-button" onclick="window.location=`{{ route('create-post') }}`">Create</button>
     </section>
 </body>
 
