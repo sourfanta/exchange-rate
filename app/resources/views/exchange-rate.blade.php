@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exchange rate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
 
-    <script>
-        $(window).on("load resize ", function() {
-            var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
-            $('.tbl-header').css({
-                'padding-right': scrollWidth
-            });
-        }).resize();
-    </script>
+    @vite([
+    'resources/css/create-button.css',
+    'resources/css/exchange-rate-table.css',
+    'resources/js/exchange-rate-table.js'
+    ])
+
 </head>
 
 <body>
@@ -48,7 +47,7 @@
             </table>
         </div>
 
-        <button class="noselect">Glass</button>
+        <button class="create-button">Create</button>
     </section>
 </body>
 
