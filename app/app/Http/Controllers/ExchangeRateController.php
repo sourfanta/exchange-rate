@@ -8,23 +8,6 @@ use App\Models\DateExchangeRate;
 class ExchangeRateController extends Controller
 {
     /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
-    {
-        //
-    }
-
-    public function index()
-    {
-        return view('exchange-rate');
-    }
-
-
-    /**
      * Find all exchange rates
      *
      * @return string

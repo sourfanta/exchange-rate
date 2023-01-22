@@ -3,6 +3,11 @@
 use App\Http\Controllers\ExchangeRateController;
 use Illuminate\Support\Facades\Route;
 
+/**
+ * Routes for ExchangeRateController
+ *
+ */
+
 Route::get('/', [ExchangeRateController::class, 'find']);
 
 Route::get('/create', [ExchangeRateController::class, 'createView']);
