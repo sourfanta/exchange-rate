@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DateExchangeRate;
+use App\Exceptions\Handler;
 
 class ExchangeRateController extends Controller
 {
@@ -29,7 +30,6 @@ class ExchangeRateController extends Controller
         $exchangeRate = DateExchangeRate::where('date', $date)->get();
         return view('exchange-rate', ['exchangeRate' => $exchangeRate]);
     }
-
 
     /**
      * Find exchange rate by date range
@@ -70,7 +70,7 @@ class ExchangeRateController extends Controller
         $exchangeRate->date = $request->date;
         $exchangeRate->currencyCodeFrom = $request->currencyCodeFrom;
         $exchangeRate->currencyCodeTo = $request->currencyCodeTo;
-        $exchangeRate->valueFrom = $request->valueFrom;
+        $exchangeRate->valueFrom = ($request->valueFrom == null) ? 1 : $request->valueFrom;
         $exchangeRate->valueTo = $request->valueTo;
 
         $exchangeRate->save();
