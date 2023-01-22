@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ExchangeRateController::class, 'find']);
 
-Route::get('/{startDate}/{endDate}', [ExchangeRateController::class, 'findByDateRange']);
-
 Route::get('/create', [ExchangeRateController::class, 'createView']);
 
-Route::post('/create', [ExchangeRateController::class, 'create']);
+Route::post('/create', [ExchangeRateController::class, 'create'])->name('create-post');
+
+Route::get('/{startDate}', [ExchangeRateController::class, 'findByDate']);
+
+Route::get('/{startDate}/{endDate}', [ExchangeRateController::class, 'findByDateRange']);

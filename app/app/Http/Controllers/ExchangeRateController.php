@@ -36,6 +36,19 @@ class ExchangeRateController extends Controller
     }
 
     /**
+     * Find exchange rate by date
+     *
+     * @param string $date
+     * @return string
+     */
+    public function findByDate($date)
+    {
+        $exchangeRate = DateExchangeRate::where('date', $date)->get();
+        return view('exchange-rate', ['exchangeRate' => $exchangeRate]);
+    }
+
+
+    /**
      * Find exchange rate by date range
      *
      * @param string $startDate
@@ -44,8 +57,11 @@ class ExchangeRateController extends Controller
      */
     public function findByDateRange($startDate, $endDate)
     {
+        if ($endDate == null)
+            $endDate = $startDate;
+
         $exchangeRate = DateExchangeRate::whereBetween('date', [$startDate, $endDate])->get();
-        return json_encode($exchangeRate);
+        return view('exchange-rate', ['exchangeRate' => $exchangeRate]);
     }
 
     /**
