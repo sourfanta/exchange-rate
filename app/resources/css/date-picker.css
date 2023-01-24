@@ -18,13 +18,12 @@
 * ==========================================
 *
 */
-body {
-    min-height: 100vh;
-    background-color: #fafafa;
-}
 
 .input-group {
     border-radius: 30rem;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 input.form-control {

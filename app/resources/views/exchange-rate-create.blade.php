@@ -21,13 +21,13 @@
         'resources/css/date-picker.css',
         'resources/js/date-picker.js',
         'resources/css/exchange-rate.css',
-        'resources/css/select.css'
+        'resources/css/select.css',
+        'resources/css/input.css'
     ])
 </head>
 
 <body>
 <section>
-    <!--for demo wrap-->
     <h1>Add exchange rate</h1>
 
     @if($errors->any())
@@ -36,16 +36,14 @@
 
     <form action="/create" method="POST">
         @csrf
-
         <!-- Date Picker Input -->
-        <div class="form-group mb-4">
-            <div class="datepicker date input-group p-0 shadow-sm">
-                <input type="text" name="date" placeholder="Choose date" class="form-control py-4 px-4" id="reservationDate">
-                <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
-            </div>
+        <div class="datepicker date input-group p-0 shadow-sm">
+            <input type="text" name="date" placeholder="Choose date" class="form-control py-4 px-4" id="reservationDate" autocomplete="off">
+            <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
         </div>
         <!-- End Date Picker Input -->
 
+        <!-- Select Currency From -->
         <div class="select" name="currencyCodeFrom" >
             <select>
                 @foreach($currencyArray as $currency)
@@ -53,7 +51,9 @@
                 @endforeach
             </select>
         </div>
+        <!-- End Select Currency From -->
 
+        <!-- Select Currency To -->
         <div class="select" name="currencyCodeTo" >
             <select>
                 @foreach($currencyArray as $currency)
@@ -61,12 +61,12 @@
                 @endforeach
             </select>
         </div>
+        <!-- End Select Currency To -->
 
+        <!-- Input Price -->
+        <input type="float" class="form__input" id="valueTo" name="valueTo" placeholder="Price" />
+        <!-- End Input Price -->
 
-
-        {{--        <input type="float" name="valueFrom" id="valueFrom">--}}
-
-        <input type="float" name="valueTo" placeholder="PRICE" id="valueTo">
         <button class="create-button" type="submit">Add</button>
     </form>
 </section>

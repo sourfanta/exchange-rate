@@ -14,7 +14,8 @@ export default defineConfig({
                 'resources/css/bootstrap.css',
                 'resources/css/date-picker.css',
                 'resources/js/date-picker.js',
-                'resources/css/select.css'
+                'resources/css/select.css',
+                'resources/css/input.css',
             ],
             refresh: true,
         }),
