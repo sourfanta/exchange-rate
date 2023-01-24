@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DateExchangeRate;
 use App\Dto\ExchangeRateCreateDto;
+use App\Enums\CurrencyEnum;
+use Illuminate\Validation\Rules\Enum;
+use Illuminate\View\View;
 
 class ExchangeRateController extends Controller
 {
     /**
      * Find all exchange rates
      *
-     * @return string
+     * @return View
      */
     public function find()
     {
@@ -65,6 +68,14 @@ class ExchangeRateController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'date' => 'required|date',
+            'currencyCodeFrom' => [new Enum(CurrencyEnum::class)],
+            'currencyCodeTo' => [new Enum(CurrencyEnum::class)],
+            'valueFrom' => 'numeric',
+            'valueTo' => 'required|numeric',
+        ]);
+
         $dto = new ExchangeRateCreateDto($request);
 
         $exchangeRate = new DateExchangeRate();

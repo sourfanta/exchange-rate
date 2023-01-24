@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
 
     @vite([
-    'resources/css/create-button.css',
-    'resources/css/exchange-rate-table.css',
-    'resources/js/exchange-rate-table.js'
+        'resources/css/create-button.css',
+        'resources/css/exchange-rate-table.css',
+        'resources/js/exchange-rate-table.js'
     ])
 
 </head>

@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    @if($errors->any())
+        <p style="color:red">Error: {{ $errors->first() }}</p>
+    @endif
+
     <form action="/create" method="POST">
         @csrf
         <div class='form-group'>
