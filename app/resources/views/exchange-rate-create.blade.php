@@ -21,6 +21,7 @@
         'resources/css/date-picker.css',
         'resources/js/date-picker.js',
         'resources/css/exchange-rate.css',
+        'resources/css/select.css'
     ])
 </head>
 
@@ -45,20 +46,23 @@
         </div>
         <!-- End Date Picker Input -->
 
+        <div class="select" name="currencyCodeFrom" >
+            <select>
+                @foreach($currencyArray as $currency)
+                    <option value="{{ $currency }}">{{ $currency }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <select id="currencyCodeFromSelect" name="currencyCodeFrom" class="form-select">
-            <option selected>Currency</option>
-            @foreach($currencyArray as $currency)
-                <option value="{{ $currency }}">{{ $currency }}</option>
-            @endforeach
-        </select>
+        <div class="select" name="currencyCodeTo" >
+            <select>
+                @foreach($currencyArray as $currency)
+                    <option value="{{ $currency }}">{{ $currency }}</option>
+                @endforeach
+            </select>
+        </div>
 
-        <select id="currencyCodeToSelect" name="currencyCodeTo"  class="form-select">
-            <option selected>Currency</option>
-            @foreach($currencyArray as $currency)
-                <option value="{{ $currency }}">{{ $currency }}</option>
-            @endforeach
-        </select>
+
 
         {{--        <input type="float" name="valueFrom" id="valueFrom">--}}
 
