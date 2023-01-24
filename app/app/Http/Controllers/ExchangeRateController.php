@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DateExchangeRate;
-use App\Exceptions\Handler;
+use App\Dto\ExchangeRateCreateDto;
 
 class ExchangeRateController extends Controller
 {
@@ -65,13 +65,15 @@ class ExchangeRateController extends Controller
      */
     public function create(Request $request)
     {
+        $dto = new ExchangeRateCreateDto($request);
+
         $exchangeRate = new DateExchangeRate();
 
-        $exchangeRate->date = $request->date;
-        $exchangeRate->currencyCodeFrom = $request->currencyCodeFrom;
-        $exchangeRate->currencyCodeTo = $request->currencyCodeTo;
-        $exchangeRate->valueFrom = ($request->valueFrom == null) ? 1 : $request->valueFrom;
-        $exchangeRate->valueTo = $request->valueTo;
+        $exchangeRate->date = $dto->date;
+        $exchangeRate->currencyCodeFrom = $dto->currencyCodeFrom;
+        $exchangeRate->currencyCodeTo = $dto->currencyCodeTo;
+        $exchangeRate->valueFrom = $dto->valueFrom;
+        $exchangeRate->valueTo = $dto->valueTo;
 
         $exchangeRate->save();
 
