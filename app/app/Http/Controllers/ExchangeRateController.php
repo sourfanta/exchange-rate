@@ -16,7 +16,7 @@ class ExchangeRateController extends Controller
      *
      * @return View
      */
-    public function find()
+    public function find(): View
     {
         $exchangeRate = DateExchangeRate::all();
         return view('exchange-rate', ['exchangeRate' => $exchangeRate]);
@@ -26,9 +26,9 @@ class ExchangeRateController extends Controller
      * Find exchange rate by date
      *
      * @param string $date
-     * @return string
+     * @return View
      */
-    public function findByDate($date)
+    public function findByDate(string $date): View
     {
         $exchangeRate = DateExchangeRate::where('date', $date)->get();
         return view('exchange-rate', ['exchangeRate' => $exchangeRate]);
@@ -39,9 +39,9 @@ class ExchangeRateController extends Controller
      *
      * @param string $startDate
      * @param string $endDate
-     * @return string
+     * @return View
      */
-    public function findByDateRange($startDate, $endDate)
+    public function findByDateRange(string $startDate, string $endDate): View
     {
         if ($endDate == null)
             $endDate = $startDate;
@@ -53,9 +53,9 @@ class ExchangeRateController extends Controller
     /**
      * Create exchange rate view
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function createView()
+    public function createView(): View
     {
         return view('exchange-rate-create', ['currencyArray' =>  CurrencyEnum::cases()]);
     }
@@ -64,9 +64,9 @@ class ExchangeRateController extends Controller
      * Create exchange rate
      *
      * @param Request $request
-     * @return string
+     * @return View
      */
-    public function create(Request $request)
+    public function create(Request $request): View
     {
         $request->validate([
             'date' => 'required|date',

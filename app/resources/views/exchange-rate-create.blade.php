@@ -30,10 +30,6 @@
 <section>
     <h1>Add exchange rate</h1>
 
-    @if($errors->any())
-        <p style="color:red">Error: {{ $errors->first() }}</p>
-    @endif
-
     <form action="/create" method="POST">
         @csrf
         <!-- Date Picker Input -->
@@ -69,6 +65,10 @@
 
         <button class="create-button" type="submit">Add</button>
     </form>
+
+    @if($errors->any())
+        <p style="color:red; text-align: center; margin-top: 10px;">Error: {{ $errors->first() }}</p>
+    @endif
 </section>
 </body>
 
