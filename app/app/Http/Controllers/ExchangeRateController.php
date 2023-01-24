@@ -57,7 +57,7 @@ class ExchangeRateController extends Controller
      */
     public function createView()
     {
-        return view('exchange-rate-create');
+        return view('exchange-rate-create', ['currencyArray' =>  CurrencyEnum::cases()]);
     }
 
     /**

@@ -15,30 +15,26 @@
 
     <form action="/create" method="POST">
         @csrf
-        <div class='form-group'>
-            <input type="date" name="date" id="date">
-        </div>
+        <input type="date" name="date" id="date">
 
-        <div class='form-group'>
-            <input type="text" name="currencyCodeFrom" placeholder="FROM" id="currencyCodeFrom">
-        </div>
+        <select id="currencyCodeFromSelect" name="currencyCodeFrom" class="form-select">
+            <option selected>Currency</option>
+            @foreach($currencyArray as $currency)
+                <option value="{{ $currency }}">{{ $currency }}</option>
+            @endforeach
+        </select>
 
-        <div class='form-group'>
-            <input type="text" name="currencyCodeTo" placeholder="TO" id="currencyCodeTo">
-        </div>
+        <select id="currencyCodeToSelect" name="currencyCodeTo"  class="form-select">
+            <option selected>Currency</option>
+            @foreach($currencyArray as $currency)
+                <option value="{{ $currency }}">{{ $currency }}</option>
+            @endforeach
+        </select>
 
-        <!-- <div class='form-group'>
-            <input type="float" name="valueFrom" id="valueFrom">
-        </div> -->
+{{--        <input type="float" name="valueFrom" id="valueFrom">--}}
 
-        <div class='form-group'>
-            <input type="float" name="valueTo" placeholder="PRICE" id="valueTo">
-        </div>
-
-        <div class='form-group'>
-            <button type="submit">Add</button>
-        </div>
-
+        <input type="float" name="valueTo" placeholder="PRICE" id="valueTo">
+        <button type="submit">Add</button>
     </form>
 </body>
 
