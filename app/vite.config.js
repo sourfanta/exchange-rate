@@ -9,8 +9,12 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/exchange-rate-table.css',
                 'resources/css/create-button.css',
+                'resources/css/exchange-rate.css',
                 'resources/js/exchange-rate-table.js',
                 'resources/css/bootstrap.css',
+                'resources/css/date-picker.css',
+                'resources/js/date-picker.js',
+                'resources/css/select.css'
             ],
             refresh: true,
         }),

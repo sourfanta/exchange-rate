@@ -10,6 +10,7 @@
 
     @vite([
         'resources/css/create-button.css',
+        'resources/css/exchange-rate.css',
         'resources/css/exchange-rate-table.css',
         'resources/js/exchange-rate-table.js'
     ])
