@@ -6,7 +6,7 @@ ADD /docker/conf/fornex.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /var/www/laravel-docker
 
-COPY ./ /var/www/laravel-docker
+COPY ./package.json /var/www/laravel-docker
 
 RUN apt-get update
 
@@ -15,13 +15,3 @@ RUN apt-get -y install nodejs
 
 RUN npm install
 
-
-RUN apt-get install -y \
-        libzip-dev \
-        zip \
-  && docker-php-ext-install zip
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN composer update
-RUN composer install
