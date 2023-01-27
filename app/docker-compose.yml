@@ -1,35 +1,87 @@
-version: '3.3'
-
+version: "3.8"
 services:
-    nginx:
-        platform: linux/x86_64
+
+    # PHP Service
+    php:
         build:
             context: .
-            dockerfile: docker/Nginx.Dockerfile
-        ports:
-            - 8098:80
-        links:
-            - fpm
-        volumes:
-            - ./:/var/www/laravel-docker
-    fpm:
-        platform: linux/x86_64
-        build:
-            context: .
-            dockerfile: docker/Fpm.Dockerfile
-        volumes:
-            - ./:/var/www/laravel-docker
-        links:
-            - mysql
-    mysql:
-        platform: linux/x86_64
-        image: mysql:5.7
-        ports:
-            - 33061:3306
+            target: php
+            args:
+                - APP_ENV=${APP_ENV}
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: laravel
-            MYSQL_USER: laravel
-            MYSQL_PASSWORD: laravel
+            - APP_ENV=${APP_ENV}
+            - CONTAINER_ROLE=app
+        working_dir: /var/www
         volumes:
-            - ./mysql:/var/lib/mysql
+            - ./:/var/www
+        ports:
+            - 8000:8000
+        depends_on:
+            - database
+            - redis
+
+    # PHP Service
+    websocket:
+        build:
+            context: .
+            target: php
+            args:
+                - APP_ENV=${APP_ENV}
+        environment:
+            - APP_ENV=${APP_ENV}
+            - CONTAINER_ROLE=websocket
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        ports:
+            - 6001:6001
+        depends_on:
+            - database
+            - redis
+
+    # Database Server
+    database:
+        image: mysql:8.0
+        ports:
+            -   3306:3306
+        environment:
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+        volumes:
+            - db-data:/var/lib/mysql
+
+    # Redis Server
+    redis:
+        image: redis:alpine
+        command: redis-server --appendonly yes --requirepass  "${REDIS_PASSWORD}"
+        ports:
+            - 6379:6379
+
+    # Queue Server
+    queue:
+        build:
+            context: .
+            target: php
+            args:
+                - APP_ENV=${APP_ENV}
+        environment:
+            - APP_ENV=${APP_ENV}
+            - CONTAINER_ROLE=queue
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+
+    # Node Server
+    node:
+        build:
+            context: .
+            target: node
+        volumes:
+            - .:/usr/src
+            - ./node_modules:/usr/src/node_modules
+        tty: true
+
+volumes:
+    db-data: ~
