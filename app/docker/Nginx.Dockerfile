@@ -9,8 +9,6 @@ WORKDIR /var/www/laravel-docker
 COPY ./package.json /var/www/laravel-docker
 
 RUN apt-get update
-RUN apt-get -y install npm
-RUN npm install -g npm@9.4.0
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x  | bash -
 RUN apt-get -y install nodejs
