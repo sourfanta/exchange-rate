@@ -1,29 +1,20 @@
-FROM php:8.1 as php
+FROM php:8.1-apache
 
-RUN apt-get update -y
-RUN apt-get install -y unzip libpq-dev libcurl4-gnutls-dev
-RUN docker-php-ext-install pdo pdo_mysql bcmath
+RUN apt update \
+        && apt install -y \
+            g++ \
+            libicu-dev \
+            libpq-dev \
+            libzip-dev \
+            zip \
+            zlib1g-dev \
+        && docker-php-ext-install \
+            intl \
+            opcache \
+            pdo \
+            pdo_pgsql \
+            pgsql \
 
-RUN pecl install -o -f redis \
-    && rm -rf /tmp/pear \
-    && docker-php-ext-enable redis
+WORKDIR /var/www/laravel_docker
 
-WORKDIR /var/www
-COPY . .
-
-COPY --from=composer:2.3.5 /usr/bin/composer /usr/bin/composer
-
-ENV PORT=8000
-ENTRYPOINT [ "docker/entrypoint.sh" ]
-
-# ==============================================================================
-#  node
-FROM node:14-alpine as node
-
-WORKDIR /var/www
-COPY . .
-
-RUN npm install --global cross-env
-RUN npm install
-
-VOLUME /var/www/node_modules
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
