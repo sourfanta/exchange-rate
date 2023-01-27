@@ -7,7 +7,7 @@ WORKDIR /var/www/laravel-docker
 RUN apt-get update \
     && docker-php-ext-install pdo pdo_mysql
 
-COPY ./composer.json /var/www/laravel-docker
+COPY ./ /var/www/laravel-docker
 
 RUN apt-get install -y \
         libzip-dev \
