@@ -5,6 +5,7 @@ RUN apt-get update \
 
 WORKDIR /var/www/laravel-docker
 COPY ./composer.json /var/www/laravel-docker
+COPY ./composer.lock /var/www/laravel-docker
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
