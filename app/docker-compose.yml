@@ -1,15 +1,15 @@
 version: "3.3"
 services:
-#    php:
-#        build:
-#            context: .
-#        ports:
-#            - '8080:80'
-#        volumes:
-#            - ./:/var/www/laravel_docker
-#            - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
-#        links:
-#            - mysql
+    php:
+        build:
+            context: .
+        ports:
+            - '8080:80'
+        volumes:
+            - ./:/var/www/laravel_docker
+            - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+        links:
+            - mysql
     mysql:
         platform: linux/x86_64
         image: mysql:5.7
@@ -22,12 +22,12 @@ services:
             - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
         volumes:
             - ./mysql:/var/lib/mysql
-#    node:
-#        build:
-#            context: .
-#        volumes:
-#            - .:/usr/src
-#            - ./node_modules:/usr/src/node_modules
+    node:
+        build:
+            context: .
+        volumes:
+            - .:/usr/src
+            - ./node_modules:/usr/src/node_modules
 
 volumes:
     db-data: ~
