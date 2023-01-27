@@ -9,7 +9,7 @@ COPY ./composer.json /var/www/laravel-docker
 RUN apt-get install -y \
         libzip-dev \
         zip \
-  && docker-php-ext-install zip \
+  && docker-php-ext-install zip
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
