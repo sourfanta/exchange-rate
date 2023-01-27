@@ -1,36 +1,33 @@
-version: "3.8"
+version: "3.3"
 services:
-    php-apache:
-        container_name: php-apache
+    php:
         build:
-            context: ./php
+            context: .
         ports:
             - '8080:80'
         volumes:
             - ./:/var/www/laravel_docker
             - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
-        depends_on:
-            - database
-
-    database:
-        image: mysql:8.0
+        links:
+            - mysql
+    mysql:
+        platform: linux/x86_64
+        image: mysql:5.7
         ports:
-            - 3306:3306
+            - 33061:3306
         environment:
             - MYSQL_DATABASE=${DB_DATABASE}
             - MYSQL_USER=${DB_USERNAME}
             - MYSQL_PASSWORD=${DB_PASSWORD}
             - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
         volumes:
-            - db-data:/var/lib/mysql
+            - ./mysql:/var/lib/mysql
     node:
         build:
             context: .
-            target: node
         volumes:
             - .:/usr/src
             - ./node_modules:/usr/src/node_modules
-        tty: true
 
 volumes:
     db-data: ~
