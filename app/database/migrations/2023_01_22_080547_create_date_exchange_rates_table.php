@@ -23,11 +23,13 @@ return new class extends Migration
         Schema::create('date_exchange_rates', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('date')->unique;
+            $table->date('date');
             $table->string('currencyCodeFrom');
             $table->string('currencyCodeTo');
             $table->float('valueFrom');
             $table->float('valueTo');
+
+            $table->unique(['date', 'currencyCodeFrom', 'currencyCodeTo']);
         });
     }
 

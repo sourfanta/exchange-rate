@@ -4,8 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b47fa0bd-d0c7-4a0b-9cc1-d684163c8539" name="Changes" comment="build: config docker">
-      <change beforePath="$PROJECT_DIR$/app/apache/default.conf" beforeDir="false" />
+    <list default="true" id="b47fa0bd-d0c7-4a0b-9cc1-d684163c8539" name="Changes" comment="build:new config docker">
+      <change afterPath="$PROJECT_DIR$/app/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/app/.docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/Http/Controllers/ExchangeRateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/Http/Controllers/ExchangeRateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bootstrap/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/database/migrations/2023_01_22_080547_create_date_exchange_rates_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/migrations/2023_01_22_080547_create_date_exchange_rates_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resources/js/date-picker.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/js/date-picker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/resources/views/exchange-rate-create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/resources/views/exchange-rate-create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,6 +197,8 @@
       <workItem from="1674816177603" duration="3108000" />
       <workItem from="1674819346811" duration="12343000" />
       <workItem from="1675069476919" duration="634000" />
+      <workItem from="1675074571364" duration="2302000" />
+      <workItem from="1675077218481" duration="7335000" />
     </task>
     <task id="LOCAL-00001" summary="build: set ups dockerfile">
       <created>1674802911754</created>
@@ -397,7 +410,21 @@
       <option name="project" value="LOCAL" />
       <updated>1674836683013</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="build:new config docker">
+      <created>1675074684086</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1675074684086</updated>
+    </task>
+    <task id="LOCAL-00032" summary="build:new config docker">
+      <created>1675074706597</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1675074706597</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,6 +459,7 @@
     <MESSAGE value="build: fix fpm dockerfile" />
     <MESSAGE value="build: remove dockerfiles" />
     <MESSAGE value="build: config docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: config docker" />
+    <MESSAGE value="build:new config docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="build:new config docker" />
   </component>
 </project>

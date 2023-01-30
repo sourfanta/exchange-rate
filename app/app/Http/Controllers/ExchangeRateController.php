@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DateExchangeRate;
 use App\Dto\ExchangeRateCreateDto;
+use Illuminate\Http\RedirectResponse;
 use App\Enums\CurrencyEnum;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
@@ -64,9 +65,9 @@ class ExchangeRateController extends Controller
      * Create exchange rate
      *
      * @param Request $request
-     * @return View
+     * @return RedirectResponse
      */
-    public function create(Request $request): View
+    public function create(Request $request): RedirectResponse
     {
         $request->validate([
             'date' => 'required|date',

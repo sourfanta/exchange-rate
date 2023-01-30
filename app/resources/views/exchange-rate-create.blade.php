@@ -40,8 +40,8 @@
         <!-- End Date Picker Input -->
 
         <!-- Select Currency From -->
-        <div class="select" name="currencyCodeFrom" >
-            <select>
+        <div class="select">
+            <select name="currencyCodeFrom">
                 @foreach($currencyArray as $currency)
                     <option value="{{ $currency }}">{{ $currency }}</option>
                 @endforeach
@@ -50,8 +50,8 @@
         <!-- End Select Currency From -->
 
         <!-- Select Currency To -->
-        <div class="select" name="currencyCodeTo" >
-            <select>
+        <div class="select">
+            <select name="currencyCodeTo">
                 @foreach($currencyArray as $currency)
                     <option value="{{ $currency }}">{{ $currency }}</option>
                 @endforeach
